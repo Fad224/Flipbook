@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Bricolage Grotesque", sans-serif;
+}
+
+body,
+html {
+  height: 100dvh;
+  width: 100dvw;
+  background: #0e1a26;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.page-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  text-align: center;
+}
+
+.type-rock {
+  background-color: #9a7b4f;
+}
+
+.pokemon-description {
+  font-size: 14px;
+  color: #34495e;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+.demoPage {
+  background: #fff;
+  color: #000;
+}
