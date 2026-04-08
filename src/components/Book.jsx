@@ -19,6 +19,38 @@ function Book() {
 
   const bookRef = useRef();
   const [isAnimating, setIsAnimating] = useState(false);
+  const [bookDimensions, setBookDimensions] = useState({ width: 707, height: 500 });
+
+  useEffect(() => {
+    const calculateDimensions = () => {
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+      const aspectRatio = 707 / 500; // Original aspect ratio
+      
+      // Add padding/margin
+      const padding = screenWidth < 768 ? 20 : 40;
+      const maxWidth = screenWidth - padding;
+      const maxHeight = screenHeight - padding;
+      
+      let width, height;
+      
+      // Calculate dimensions while maintaining aspect ratio
+      if (maxWidth / aspectRatio <= maxHeight) {
+        width = maxWidth;
+        height = maxWidth / aspectRatio;
+      } else {
+        height = maxHeight;
+        width = maxHeight * aspectRatio;
+      }
+      
+      setBookDimensions({ width, height });
+    };
+    
+    calculateDimensions();
+    window.addEventListener('resize', calculateDimensions);
+    
+    return () => window.removeEventListener('resize', calculateDimensions);
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -59,8 +91,8 @@ function Book() {
   return (
     <HTMLFlipBook 
       ref={bookRef}
-      width={707} 
-      height={500}
+      width={bookDimensions.width} 
+      height={bookDimensions.height}
       maxShadowOpacity={0.5}
       drawShadow={true}
       showCover={true}
